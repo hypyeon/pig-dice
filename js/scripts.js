@@ -54,8 +54,8 @@ function getNames() {
         playerTwo.innerText = 'Computer';
         player2.player = 'Computer';
     } else if (twoPlayers.checked) {
-        const name1 = formatName(playerOneName.value);
-        const name2 = formatName(playerOneName.value);
+        const name1 = formatName(playerOneName.value) + " (1P)";
+        const name2 = formatName(playerTwoName.value) + " (2P)";
         playerOne.innerText = name1;
         player1.player = name1;
         playerTwo.innerText = name2;
