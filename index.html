@@ -27,15 +27,23 @@
         </form>
         <form id="playerOne" class="hidden">
             <h3 id="player-1"></h3>
-            <div id="resultOne">
-                <div>
-                    <p>Current score: <span id="currentScoreOne"></span></p>
+            <div id="resultOne" class="flex center">
+                <div class="scores roll">
+                    <span id="diceResultOne" class="numbers"></span>
                 </div>
-                <div>
-                    <p>Total score: <span id="totalScoreOne"></span></p>
+                <div class="scores">
+                    <p>
+                        <span id="currentScoreOne" class="numbers"></span>
+                        <br>
+                        <span class="board">Current</span>
+                    </p>
                 </div>
-                <div>
-                    <span id="diceResultOne"></span>
+                <div class="scores">
+                    <p>
+                        <span id="totalScoreOne" class="numbers"></span>
+                        <br>
+                        <span class="board">Total</span>
+                    </p>
                 </div>
             </div>
             <button id="playBtnOne" class="btnOne">Play</button>
@@ -43,15 +51,23 @@
         </form>
         <form id="playerTwo" class="hidden">
             <h3 id="player-2"></h3>
-            <div id="resultTwo">
-                <div>
-                    <p>Current score: <span id="currentScoreTwo"></span></p>
+            <div id="resultTwo" class="flex center">
+                <div class="scores roll">
+                    <span id="diceResultTwo" class="numbers"></span>
                 </div>
-                <div>
-                    <p>Total score: <span id="totalScoreTwo"></span></p>
+                <div class="scores">
+                    <p>
+                        <span id="currentScoreTwo" class="numbers"></span>
+                        <br>
+                        <span class="board">Current</span>
+                    </p>
                 </div>
-                <div>
-                    <span id="diceResultTwo"></span>
+                <div class="scores">
+                    <p>
+                        <span id="totalScoreTwo" class="numbers"></span>
+                        <br>
+                        <span class="board">Total</span>
+                    </p>
                 </div>
             </div>
             <button id="playBtnTwo" class="btnTwo">Play</button>
@@ -59,6 +75,11 @@
         </form>
         <br>
         <button id="goBack" class="hidden">START OVER</button>    
+        <div id="winnerAnnouncement" class="hidden">
+            <h2>
+                You wont this game! 🎉
+            </h2>
+        </div>
     </section>
     <script src="js/scripts.js"></script>
 </body>

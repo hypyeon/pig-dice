@@ -6,7 +6,6 @@ $fontPrimary: 'Ubuntu Mono', monospace;
     padding: 0;
     margin: 0;
 }
-
 .hidden {
     display: none;
 }
@@ -66,4 +65,36 @@ button {
             margin: 0 .25rem;
         }
     }
+}
+.scores {
+    width: 4rem;
+    height: 4rem;
+    background-color: rgb(233, 255, 252);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem .25rem;
+    .numbers {
+        margin: 2rem 0;
+    }
+    .board {
+        font-size: .75rem;
+        color: gray;
+    }
+}
+.roll {
+    background-color: white;
+    border: 2px solid black;
+}
+#winnerAnnouncement {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 2rem 4rem;
+    background-color: white;
+    border: 3px solid red;
+    width: 80vw;
 }

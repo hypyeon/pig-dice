@@ -70,8 +70,8 @@ function PigDice(player, score) {
     this.total = [];
 }
 
-const player1 = new PigDice("player1", 0);
-const player2 = new PigDice("player2", 0);
+const player1 = new PigDice("Player1", 0);
+const player2 = new PigDice("Player2", 0);
 
 PigDice.prototype.getCurrent = function(num) {
     if (num === 1) {
@@ -82,9 +82,8 @@ PigDice.prototype.getCurrent = function(num) {
     return this.current.reduce((a, b) => a + b, 0);
 }
 PigDice.prototype.getTotal = function(num) {
-    if (num !== 1) {
-        this.total.push(num);
-    }
+    const current = this.getCurrent(num) - num;
+    this.total.push(current);
     return this.total.reduce((a, b) => a + b, 0);
 }
 
@@ -92,26 +91,30 @@ function getRandomNum() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
-function btnDisablerOne(num) {
+function btnDisablerOne(num, element) {
     const btnsOne = document.getElementsByClassName("btnOne");
     const btnsTwo = document.getElementsByClassName("btnTwo");
     if (num === 1) {
         disableButtons(btnsOne);
         enableButtons(btnsTwo);
+        element.style.color = 'red';
     } else {
         disableButtons(btnsTwo);
         enableButtons(btnsOne);
+        element.style.color = 'black';
     }
 }
-function btnDisablerTwo(num) {
+function btnDisablerTwo(num, element) {
     const btnsOne = document.getElementsByClassName("btnOne");
     const btnsTwo = document.getElementsByClassName("btnTwo");
     if (num === 1) {
         disableButtons(btnsTwo);
         enableButtons(btnsOne);
+        element.style.color = 'red';
     } else {
         disableButtons(btnsOne);
         enableButtons(btnsTwo);
+        element.style.color = 'black';
     }
 }
 function disableButtons(btns) {
@@ -128,34 +131,72 @@ function enableButtons(btns) {
         btns[i].style.color = ''; // Reset to default text color
     }
 }
+function getWinner(value) {
+    const btnsOne = document.getElementsByClassName("btnOne");
+    const btnsTwo = document.getElementsByClassName("btnTwo");
+    const announcement = document.getElementById("winnerAnnouncement");
+    if (value >= 100) {
+        disableButtons(btnsOne);
+        disableButtons(btnsTwo);
+        announcement.classList.remove("hidden");
+    } else {
+        return;
+    }
+}
 
 //UI Logic
 function getScoreOne() {
     const playBtnOne = document.getElementById("playBtnOne");
+    const holdBtnOne = document.getElementById("holdBtnOne");
     const diceResultOne = document.getElementById("diceResultOne");
     const currentScoreOne = document.getElementById("currentScoreOne");
     const totalScoreOne = document.getElementById("totalScoreOne");
+    const btnsOne = document.getElementsByClassName("btnOne");
+    const btnsTwo = document.getElementsByClassName("btnTwo");
     playBtnOne.addEventListener("click", e => {
         e.preventDefault();
         player1.score = getRandomNum();
-        btnDisablerOne(player1.score);
+        btnDisablerOne(player1.score, diceResultOne);
         diceResultOne.innerText = player1.score;
         currentScoreOne.innerText = player1.getCurrent(player1.score);
-        totalScoreOne.innerText = player1.getTotal(player1.score);
+    });
+    holdBtnOne.addEventListener("click", e => {
+        e.preventDefault();
+        const totalScore = player1.getTotal(player1.score);
+        totalScoreOne.innerText = totalScore;
+        getWinner(totalScore);
+        player1.current = [];
+        diceResultOne.innerText = '';
+        currentScoreOne.innerText = 0;
+        disableButtons(btnsOne);
+        enableButtons(btnsTwo);
     });
 }
 function getScoreTwo() {
     const playBtnTwo = document.getElementById("playBtnTwo");
+    const holdBtnTwo = document.getElementById("holdBtnTwo");
     const diceResultTwo = document.getElementById("diceResultTwo");
     const currentScoreTwo = document.getElementById("currentScoreTwo");
     const totalScoreTwo = document.getElementById("totalScoreTwo");
+    const btnsOne = document.getElementsByClassName("btnOne");
+    const btnsTwo = document.getElementsByClassName("btnTwo");
     playBtnTwo.addEventListener("click", e => {
         e.preventDefault();
         player2.score = getRandomNum();
-        btnDisablerTwo(player2.score);
+        btnDisablerTwo(player2.score, diceResultTwo);
         diceResultTwo.innerText = player2.score;
         currentScoreTwo.innerText = player2.getCurrent(player2.score);
-        totalScoreTwo.innerText = player2.getTotal(player2.score);
+    });
+    holdBtnTwo.addEventListener("click", e => {
+        e.preventDefault();
+        const totalScore = player2.getTotal(player2.score);
+        totalScoreTwo.innerText = totalScore;
+        getWinner(totalScore);
+        player2.current = [];
+        diceResultTwo.innerText = '';
+        currentScoreTwo.innerText = 0;
+        disableButtons(btnsTwo);
+        enableButtons(btnsOne);
     });
 }
 
