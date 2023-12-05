@@ -22,19 +22,11 @@ function getPlayerInfo() {
         createTextInput(playerNames, 'Name of Player 2', 'playerTwoName', 'playerTwoName');
     });
 }
-function formatName(name, num) {
-    if (num === 1) {
-        if (name !== '') {
-            return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
-        } else {
-            return "Player";
-        }
-    } else if (num === 2) {
-        if (name !== '') {
-            return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
-        } else {
-            return ["Player1", "Player2"];
-        }
+function formatName(name) {
+    if (name !== '') {
+        return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
+    } else {
+        return "Player";
     }
 }
 function PigDice(player, score) {
@@ -56,15 +48,14 @@ function getNames() {
     const playerOneName = document.getElementById("playerOneName");
     const playerTwoName = document.getElementById("playerTwoName");
     if (onePlayer.checked) {
-        const name = formatName(playerName.value, 1);
+        const name = formatName(playerName.value);
         playerOne.innerText = name;
         player1.player = name;
         playerTwo.innerText = 'Computer';
         player2.player = 'Computer';
     } else if (twoPlayers.checked) {
-        const names = formatName(playerOneName.value, 2)
-        const name1 = names[0];
-        const name2 = names[1];
+        const name1 = formatName(playerOneName.value);
+        const name2 = formatName(playerOneName.value);
         playerOne.innerText = name1;
         player1.player = name1;
         playerTwo.innerText = name2;
