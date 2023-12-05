@@ -29,6 +29,16 @@ function formatName(name) {
         return "Player";
     }
 }
+function PigDice(player, score) {
+    this.player = player;
+    this.score = score;
+    this.current = [];
+    this.total = [];
+}
+
+const player1 = new PigDice("Player1", 0);
+const player2 = new PigDice("Player2", 0);
+
 function getNames() {
     const onePlayer = document.getElementById("onePlayer");
     const twoPlayers = document.getElementById("twoPlayers");
@@ -38,11 +48,18 @@ function getNames() {
     const playerOneName = document.getElementById("playerOneName");
     const playerTwoName = document.getElementById("playerTwoName");
     if (onePlayer.checked) {
-        playerOne.innerText = formatName(playerName.value);
+        const name = formatName(playerName.value);
+        playerOne.innerText = name;
+        player1.player = name;
         playerTwo.innerText = 'Computer';
+        player2.player = 'Computer';
     } else if (twoPlayers.checked) {
-        playerOne.innerText = formatName(playerOneName.value);
-        playerTwo.innerText = formatName(playerTwoName.value);
+        const name1 = formatName(playerOneName.value);
+        const name2 = formatName(playerTwoName.value);
+        playerOne.innerText = name1;
+        player1.player = name1;
+        playerTwo.innerText = name2;
+        player2.player = name2;
     } else {
         window.location.reload();
     }
@@ -60,18 +77,6 @@ function eventHandler() {
         window.location.reload();
     })
 }
-
-
-//Business Logic
-function PigDice(player, score) {
-    this.player = player;
-    this.score = score;
-    this.current = [];
-    this.total = [];
-}
-
-const player1 = new PigDice("Player1", 0);
-const player2 = new PigDice("Player2", 0);
 
 PigDice.prototype.getCurrent = function(num) {
     if (num === 1) {
@@ -120,6 +125,7 @@ function btnDisablerTwo(num, element) {
 function disableButtons(btns) {
     for (let i = 0; i < btns.length; i++) {
         btns[i].disabled = true;
+        btns[i].style.cursor = "not-allowed";
         btns[i].style.backgroundColor = 'white';
         btns[i].style.color = 'gray';
     }
@@ -127,18 +133,21 @@ function disableButtons(btns) {
 function enableButtons(btns) {
     for (let i = 0; i < btns.length; i++) {
         btns[i].disabled = false;
+        btns[i].style.cursor = "pointer";
         btns[i].style.backgroundColor = ''; // Reset to default background color
         btns[i].style.color = ''; // Reset to default text color
     }
 }
-function getWinner(value) {
+function getWinner(value, winner) {
     const btnsOne = document.getElementsByClassName("btnOne");
     const btnsTwo = document.getElementsByClassName("btnTwo");
     const announcement = document.getElementById("winnerAnnouncement");
+    const winnerPlace = document.getElementById("winner");
     if (value >= 100) {
         disableButtons(btnsOne);
         disableButtons(btnsTwo);
         announcement.classList.remove("hidden");
+        winnerPlace.innerText = winner;
     } else {
         return;
     }
@@ -164,7 +173,7 @@ function getScoreOne() {
         e.preventDefault();
         const totalScore = player1.getTotal(player1.score);
         totalScoreOne.innerText = totalScore;
-        getWinner(totalScore);
+        getWinner(totalScore, player1.player);
         player1.current = [];
         diceResultOne.innerText = '';
         currentScoreOne.innerText = 0;
@@ -191,7 +200,7 @@ function getScoreTwo() {
         e.preventDefault();
         const totalScore = player2.getTotal(player2.score);
         totalScoreTwo.innerText = totalScore;
-        getWinner(totalScore);
+        getWinner(totalScore, player2.player);
         player2.current = [];
         diceResultTwo.innerText = '';
         currentScoreTwo.innerText = 0;

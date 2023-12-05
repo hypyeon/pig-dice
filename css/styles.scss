@@ -45,6 +45,7 @@ button {
     color: white;
     letter-spacing: .5px;
     font-size: 1.05rem;
+    cursor: pointer;
 }
 #playerInfo {
     #radioField {
@@ -65,6 +66,9 @@ button {
             margin: 0 .25rem;
         }
     }
+}
+#scoreBoard {
+    gap: 2.5rem;
 }
 .scores {
     width: 4rem;

@@ -25,59 +25,61 @@
             <div id="playerNames"></div>
             <button id="startGameBtn">START THE GAME</button>
         </form>
-        <form id="playerOne" class="hidden">
-            <h3 id="player-1"></h3>
-            <div id="resultOne" class="flex center">
-                <div class="scores roll">
-                    <span id="diceResultOne" class="numbers"></span>
+        <div class="flex center" id="scoreBoard">
+            <form id="playerOne" class="hidden">
+                <h3 id="player-1"></h3>
+                <div id="resultOne" class="flex center">
+                    <div class="scores roll">
+                        <span id="diceResultOne" class="numbers"></span>
+                    </div>
+                    <div class="scores">
+                        <p>
+                            <span id="currentScoreOne" class="numbers"></span>
+                            <br>
+                            <span class="board">Current</span>
+                        </p>
+                    </div>
+                    <div class="scores">
+                        <p>
+                            <span id="totalScoreOne" class="numbers"></span>
+                            <br>
+                            <span class="board">Total</span>
+                        </p>
+                    </div>
                 </div>
-                <div class="scores">
-                    <p>
-                        <span id="currentScoreOne" class="numbers"></span>
-                        <br>
-                        <span class="board">Current</span>
-                    </p>
+                <button id="playBtnOne" class="btnOne">Play</button>
+                <button id="holdBtnOne" class="btnOne">Hold</button>
+            </form>
+            <form id="playerTwo" class="hidden">
+                <h3 id="player-2"></h3>
+                <div id="resultTwo" class="flex center">
+                    <div class="scores roll">
+                        <span id="diceResultTwo" class="numbers"></span>
+                    </div>
+                    <div class="scores">
+                        <p>
+                            <span id="currentScoreTwo" class="numbers"></span>
+                            <br>
+                            <span class="board">Current</span>
+                        </p>
+                    </div>
+                    <div class="scores">
+                        <p>
+                            <span id="totalScoreTwo" class="numbers"></span>
+                            <br>
+                            <span class="board">Total</span>
+                        </p>
+                    </div>
                 </div>
-                <div class="scores">
-                    <p>
-                        <span id="totalScoreOne" class="numbers"></span>
-                        <br>
-                        <span class="board">Total</span>
-                    </p>
-                </div>
-            </div>
-            <button id="playBtnOne" class="btnOne">Play</button>
-            <button id="holdBtnOne" class="btnOne">Hold</button>
-        </form>
-        <form id="playerTwo" class="hidden">
-            <h3 id="player-2"></h3>
-            <div id="resultTwo" class="flex center">
-                <div class="scores roll">
-                    <span id="diceResultTwo" class="numbers"></span>
-                </div>
-                <div class="scores">
-                    <p>
-                        <span id="currentScoreTwo" class="numbers"></span>
-                        <br>
-                        <span class="board">Current</span>
-                    </p>
-                </div>
-                <div class="scores">
-                    <p>
-                        <span id="totalScoreTwo" class="numbers"></span>
-                        <br>
-                        <span class="board">Total</span>
-                    </p>
-                </div>
-            </div>
-            <button id="playBtnTwo" class="btnTwo">Play</button>
-            <button id="holdBtnTwo" class="btnTwo">Hold</button>
-        </form>
+                <button id="playBtnTwo" class="btnTwo">Play</button>
+                <button id="holdBtnTwo" class="btnTwo">Hold</button>
+            </form>    
+        </div>
         <br>
         <button id="goBack" class="hidden">START OVER</button>    
         <div id="winnerAnnouncement" class="hidden">
             <h2>
-                You won this game! 🎉
+                <span id="winner"></span> won this game! 🎉
             </h2>
         </div>
     </section>
