@@ -102,3 +102,27 @@ button {
     border: 3px solid red;
     width: 80vw;
 }
+
+@media only screen and (orientation: portrait) {
+    section {
+        width: 80vw;
+    }
+    #playerInfo {
+        #radioField {
+            flex-direction: column;
+        }
+        #playerNames {
+            min-height: 4.5rem;
+            input {
+                margin: .25rem 0;
+            }
+        }    
+    }
+    #scoreBoard {
+        flex-direction: column;
+        gap: 0;
+        #playerOne, #playerTwo {
+            margin-bottom: 2rem;
+        }
+    }
+}
