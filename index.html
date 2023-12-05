@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pig Dice</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="flex col center">
+    <section>
+        <h1>🐷 🎲</h1>
+        <form id="playerInfo">
+            <div id="radioField" class="flex center">
+                <div>
+                    <input type="radio" name="players" id="onePlayer">
+                    <label for="onePlayer">Me <em>vs.</em> Computer</label>    
+                </div>
+                <div>
+                    <input type="radio" name="players" id="twoPlayers">
+                    <label for="twoPlayers">1P <em>vs.</em> 2P</label>        
+                </div>
+            </div>
+            <div id="playerNames"></div>
+            <button id="startGameBtn">START THE GAME</button>
+        </form>
+        <form id="playerOne" class="hidden">
+            <h3 id="player-1"></h3>
+            <div id="resultOne">
+                <div>
+                    <p>Current score: <span id="currentScoreOne"></span></p>
+                </div>
+                <div>
+                    <p>Total score: <span id="totalScoreOne"></span></p>
+                </div>
+                <div>
+                    <span id="diceResultOne"></span>
+                </div>
+            </div>
+            <button id="playBtnOne" class="btnOne">Play</button>
+            <button id="holdBtnOne" class="btnOne">Hold</button>
+        </form>
+        <form id="playerTwo" class="hidden">
+            <h3 id="player-2"></h3>
+            <div id="resultTwo">
+                <div>
+                    <p>Current score: <span id="currentScoreTwo"></span></p>
+                </div>
+                <div>
+                    <p>Total score: <span id="totalScoreTwo"></span></p>
+                </div>
+                <div>
+                    <span id="diceResultTwo"></span>
+                </div>
+            </div>
+            <button id="playBtnTwo" class="btnTwo">Play</button>
+            <button id="holdBtnTwo" class="btnTwo">Hold</button>
+        </form>
+        <br>
+        <button id="goBack" class="hidden">START OVER</button>    
+    </section>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
